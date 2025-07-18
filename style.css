@@ -178,3 +178,57 @@ html, body {
 #music-toggle.paused {
   color: #aaa;
 }
+
+/*buttons*/
+.card-buttons {
+  margin-top: 1.5rem;
+  z-index: 3;
+  position: relative;
+  /* flex container is set by bootstrap d-flex and gap */
+}
+
+.wedding-link-btn {
+  flex: 1 1 auto;
+  min-width: 80px;
+  max-width: 120px;
+  padding: 0.4rem 0.8rem;
+  font-weight: 600;
+  font-size: 1rem;
+  border-radius: 25px;
+  background: linear-gradient(135deg, #fbb1bd, #bdebe0);
+  color: #fff;
+  text-decoration: none;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+  user-select: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.wedding-link-btn::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(120deg, rgba(255, 255, 255, 0) 40%, rgba(255, 255, 255, 0.4) 50%, rgba(255, 255, 255, 0) 60%);
+  transform: rotate(25deg);
+  animation: shineMove 5s linear infinite;
+  z-index: 0;
+}
+
+.wedding-link-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+
+.wedding-link-btn span {
+  position: relative;
+  z-index: 1;
+}
