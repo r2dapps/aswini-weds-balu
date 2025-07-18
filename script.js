@@ -4,30 +4,39 @@ const textLayer = document.getElementById("text-tilt");
 const imgLayer = document.getElementById("image-tilt");
 
 function handleTilt(x, y) {
-  const rx = (y - 0.5) * 15;
-  const ry = (x - 0.5) * -15;
-  const imgRx = (y - 0.5) * 5;
-  const imgRy = (x - 0.5) * -5;
+    const rx = (y - 0.5) * 30;  // max ±15°
+    const ry = (x - 0.5) * -30;
 
-  card.querySelector('.card-inner').style.transform = `rotateX(${rx}deg) rotateY(${ry}deg)`;
-  textLayer.style.transform = `translateZ(20px) rotateX(${rx}deg) rotateY(${ry}deg)`;
-  imgLayer.style.transform = `translateZ(10px) rotateX(${imgRx}deg) rotateY(${imgRy}deg)`;
+    const imgRx = (y - 0.5) * 15;
+    const imgRy = (x - 0.5) * -15;
+
+
+    card.querySelector('.card-inner').style.transform = `rotateX(${rx}deg) rotateY(${ry}deg)`;
+    textLayer.style.transform = `translateZ(20px) rotateX(${rx}deg) rotateY(${ry}deg)`;
+    imgLayer.style.transform = `translateZ(10px) rotateX(${imgRx}deg) rotateY(${imgRy}deg)`;
 }
 
 // Mouse movement
 document.addEventListener("mousemove", e => {
-  const x = e.clientX / window.innerWidth;
-  const y = e.clientY / window.innerHeight;
-  handleTilt(x, y);
+    const x = e.clientX / window.innerWidth;
+    const y = e.clientY / window.innerHeight;
+    handleTilt(x, y);
 });
+
 
 // Mobile device orientation
 window.addEventListener("deviceorientation", e => {
-  const x = (e.gamma + 90) / 180;
-  const y = (e.beta + 180) / 360;
-  handleTilt(x, y);
-});
+    let x = e.gamma / 45;
+    let y = e.beta / 45;
 
+    x = Math.max(-1, Math.min(1, x));
+    y = Math.max(-1, Math.min(1, y));
+
+    x = (x + 1) / 2;
+    y = (y + 1) / 2;
+
+    handleTilt(x, y);
+});
 
 // ========== Countdown Timer ==========
 const target = new Date("2025-07-27T11:00:00");
