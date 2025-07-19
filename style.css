@@ -1,6 +1,12 @@
 /* Reset */
-* { margin: 0; padding: 0; box-sizing: border-box; }
-html, body {
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
   height: 100%;
   font-family: 'Lora', serif;
   background: #fdf6f0;
@@ -10,8 +16,10 @@ html, body {
 /* Background Gradient */
 .background-gradient {
   position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   background: linear-gradient(135deg, #fbb1bd, #bdebe0);
   z-index: 0;
 }
@@ -19,23 +27,31 @@ html, body {
 /* Floating Emoji Galaxy */
 .emoji-galaxy {
   position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   z-index: 1;
   pointer-events: none;
 }
+
 .emoji {
   position: absolute;
   font-size: 1.2rem;
   animation: floatEmoji 10s linear infinite;
   opacity: 0.7;
 }
+
 @keyframes floatEmoji {
   0% {
     transform: translateY(100vh) scale(0.8);
     opacity: 0;
   }
-  50% { opacity: 1; }
+
+  50% {
+    opacity: 1;
+  }
+
   100% {
     transform: translateY(-10vh) scale(1.2);
     opacity: 0;
@@ -50,8 +66,9 @@ html, body {
   z-index: 2;
   padding: 10px;
   border-radius: 25px;
+
   background: linear-gradient(to bottom right, #4a40e1, #e37373);
-  /*background: linear-gradient(to bottom right, #fffdfc, #fbe2eb);*/
+  /* background: linear-gradient(to bottom right, #fffdfc, #fbe2eb); */
   box-shadow: inset 0 0 25px rgba(255, 255, 255, 0.4), 0 12px 35px rgba(0, 0, 0, 0.2);
 }
 
@@ -73,8 +90,10 @@ html, body {
 /* Optional Background Image */
 .card-bg-img {
   position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
   z-index: 0;
   opacity: 0.5;
@@ -88,14 +107,20 @@ html, body {
   left: -50%;
   width: 200%;
   height: 200%;
-  background: linear-gradient(120deg, rgba(255,255,255,0) 40%, rgba(255,255,255,0.5) 50%, rgba(255,255,255,0) 60%);
+  background: linear-gradient(120deg, rgba(255, 255, 255, 0) 40%, rgba(255, 255, 255, 0.5) 50%, rgba(255, 255, 255, 0) 60%);
   transform: rotate(25deg);
   animation: shineMove 5s linear infinite;
   z-index: 1;
 }
+
 @keyframes shineMove {
-  0% { transform: translate(-100%, -100%) rotate(25deg); }
-  100% { transform: translate(100%, 100%) rotate(25deg); }
+  0% {
+    transform: translate(-100%, -100%) rotate(25deg);
+  }
+
+  100% {
+    transform: translate(100%, 100%) rotate(25deg);
+  }
 }
 
 /* Text Layer */
@@ -104,15 +129,18 @@ html, body {
   z-index: 3;
   position: relative;
 }
+
 .save-title {
   font-family: 'Great Vibes', cursive;
   font-size: 2.2rem;
   margin-bottom: 0.3rem;
 }
+
 .subtitle {
   font-size: 0.9rem;
   color: #8e6d61;
 }
+
 .couple-names {
   font-family: 'Dancing Script', cursive;
   font-size: 2.3rem;
@@ -124,11 +152,13 @@ html, body {
   font-size: 1rem;
   color: #6c4c3d;
 }
+
 .venue {
   font-size: 0.95rem;
   margin-top: 0.2rem;
   color: #7d5b4e;
 }
+
 .countdown {
   font-size: 1.1rem;
   color: #804242;
@@ -141,12 +171,18 @@ html, body {
   z-index: 3;
   margin-top: 1rem;
 }
-.couple-img {
+
+/* .couple-img {
   max-height: 260px;
   width: auto;
   /* box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); */
+/*} */
+.couple-img {
+  max-height: 200px; /* or even 180px if you want smaller */
+  width: auto;
+  margin: 0 auto;
+  display: block;
 }
-
 
 /*audio button*/
 #music-toggle {
@@ -179,6 +215,7 @@ html, body {
   color: #aaa;
 }
 
+
 /*buttons*/
 .card-buttons {
   margin-top: 1.5rem;
@@ -188,26 +225,26 @@ html, body {
 }
 
 .wedding-link-btn {
-  flex: 1 1 auto;
-  min-width: 80px;
-  max-width: 120px;
+  display: inline-flex; /* makes icon+text work nicely */
+  min-width: 120px;
+  max-width: 200px;
   padding: 0.4rem 0.8rem;
   font-weight: 600;
   font-size: 1rem;
   border-radius: 25px;
   background: linear-gradient(135deg, #fbb1bd, #bdebe0);
-  color: #fff;
+  color: #6e18c8;
   text-decoration: none;
   text-align: center;
   position: relative;
   overflow: hidden;
   transition: transform 0.2s ease, box-shadow 0.3s ease;
   user-select: none;
-  display: flex;
   align-items: center;
   justify-content: center;
   gap: 6px;
 }
+
 
 .wedding-link-btn::before {
   content: '';
@@ -232,3 +269,32 @@ html, body {
   position: relative;
   z-index: 1;
 }
+
+.event-divider {
+  margin: 1.2rem auto;
+  width: 60%;
+  border: 0;
+  border-top: 2px dashed #ff0421;
+}
+
+.event-section {
+  margin-top: 1.2rem;
+  position: relative;
+  z-index: 3;
+}
+
+.event-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #944f5f;
+  margin-bottom: 0.3rem;
+}
+
+.event-divider {
+  margin: 1.5rem auto;
+  width: 60%;
+  border: 0;
+  border-top: 2px dashed #eabfc4;
+}
+
+
