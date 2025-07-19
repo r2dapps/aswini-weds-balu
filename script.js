@@ -38,18 +38,40 @@ window.addEventListener("deviceorientation", e => {
     handleTilt(x, y);
 });
 
+// Betrothal Countdown
+const betrothalDate = new Date("2025-07-26T12:00:00").getTime();
+
+const betrothalCountdown = setInterval(() => {
+    const now = new Date().getTime();
+    const distance = betrothalDate - now;
+
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    const countdownBetrothal = document.getElementById("countdown-betrothal");
+    if (distance < 0) {
+        clearInterval(betrothalCountdown);
+        countdownBetrothal.innerHTML = "🎉 Betrothal Day!";
+    } else {
+        countdownBetrothal.innerHTML = `⏳ ${days}d ${hours}h ${minutes}m ${seconds}s left`;
+    }
+}, 1000);
+
+
 // ========== Countdown Timer ==========
 const target = new Date("2025-07-27T11:00:00");
 const cd = document.getElementById("countdown");
 
 function updateCountdown() {
-  const diff = target - new Date();
-  if (diff <= 0) return cd.innerText = "Today is the day!";
-  const d = Math.floor(diff / 864e5);
-  const h = Math.floor((diff % 864e5) / 36e5);
-  const m = Math.floor((diff % 36e5) / 6e4);
-  const s = Math.floor((diff % 6e4) / 1000);
-  cd.innerText = `⏳ ${d}d ${h}h ${m}m ${s}s`;
+    const diff = target - new Date();
+    if (diff <= 0) return cd.innerText = "Today is the day!";
+    const d = Math.floor(diff / 864e5);
+    const h = Math.floor((diff % 864e5) / 36e5);
+    const m = Math.floor((diff % 36e5) / 6e4);
+    const s = Math.floor((diff % 6e4) / 1000);
+    cd.innerText = `⏳ ${d}d ${h}h ${m}m ${s}s left`;
 }
 
 setInterval(updateCountdown, 1000);
@@ -63,27 +85,27 @@ const EMOJIS = ['💖', '🌸', '✨', '🌟', '💫', '❤️', '💍', '🎉',
 const galaxy = document.getElementById("emoji-galaxy");
 
 function spawnEmoji() {
-  const emoji = document.createElement("div");
-  emoji.className = "emoji";
-  emoji.innerText = EMOJIS[Math.floor(Math.random() * EMOJIS.length)];
-  emoji.style.left = Math.random() * 100 + "vw";
-  emoji.style.fontSize = (Math.random() * 1 + 0.8) + "rem";
-  emoji.style.animationDuration = (7 + Math.random() * 4) + "s";
-  galaxy.appendChild(emoji);
-  setTimeout(() => galaxy.removeChild(emoji), 12000);
+    const emoji = document.createElement("div");
+    emoji.className = "emoji";
+    emoji.innerText = EMOJIS[Math.floor(Math.random() * EMOJIS.length)];
+    emoji.style.left = Math.random() * 100 + "vw";
+    emoji.style.fontSize = (Math.random() * 1 + 0.8) + "rem";
+    emoji.style.animationDuration = (7 + Math.random() * 4) + "s";
+    galaxy.appendChild(emoji);
+    setTimeout(() => galaxy.removeChild(emoji), 12000);
 }
 
 setInterval(spawnEmoji, 500);
 
 // ========== Confetti Effect (Upward Only) ==========
 function burstConfetti() {
- // Confetti
-confetti({ particleCount: 100, spread: 70, origin: { x:0.5, y:0.2 } });
+    // Confetti
+    confetti({ particleCount: 100, spread: 70, origin: { x: 0.5, y: 0.2 } });
 }
 
 window.addEventListener("load", () => {
-  burstConfetti(); // Fire once on load
-  setInterval(burstConfetti, 10000); // Fire every 10s
+    burstConfetti(); // Fire once on load
+    setInterval(burstConfetti, 10000); // Fire every 10s
 });
 
 
@@ -92,22 +114,22 @@ const music = document.getElementById('bg-music');
 const musicToggle = document.getElementById('music-toggle');
 
 function updateButton() {
-  if (music.paused) {
-    musicToggle.textContent = '►';  // play icon
-    musicToggle.classList.add('paused');
-  } else {
-    musicToggle.textContent = '❚❚'; // pause icon
-    musicToggle.classList.remove('paused');
-  }
+    if (music.paused) {
+        musicToggle.textContent = '►';  // play icon
+        musicToggle.classList.add('paused');
+    } else {
+        musicToggle.textContent = '❚❚'; // pause icon
+        musicToggle.classList.remove('paused');
+    }
 }
 
 musicToggle.addEventListener('click', () => {
-  if (music.paused) {
-    music.play().catch(() => {});
-  } else {
-    music.pause();
-  }
-  updateButton();
+    if (music.paused) {
+        music.play().catch(() => { });
+    } else {
+        music.pause();
+    }
+    updateButton();
 });
 
 // Sync button on music end/pause/play events
@@ -116,5 +138,8 @@ music.addEventListener('pause', updateButton);
 
 // Init button state on load
 window.addEventListener('load', () => {
-  updateButton();
+    updateButton();
 });
+
+
+// Betrothal Countdown
